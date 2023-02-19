@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+
+
+
+{% block title %} addmeasure {% endblock %}
+
+{% block content %} 
+
+<h1>add measure</h1>
+
+<section class="addmeasure">
+    <h2>{{project.project_name}}</h2>
+    <form class="user-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-dark" type="submit">Создать измерение</button>
+    </form>
+</section>
+
+
+
+
+{% endblock %}

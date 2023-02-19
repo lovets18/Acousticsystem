@@ -1,0 +1,88 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'factory/css/style.css' %}">
+
+    <title>{% block title %}My site {% endblock %}</title>
+  </head>
+  <body>
+  <div class="contain">
+
+    <div class="header">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{% url 'factory:index'%}"><img class="logo" src="{% static 'factory/images/logo.jpg' %}" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'factory:index'  %}">Проекты</a>
+                </li>
+
+                  <li class="nav-item">
+                  <a class="nav-link" href="{% url 'factory:add_project'%}">Создать проект</a>
+                </li>
+
+
+                {% if request.user.is_authenticated %}
+                <li class="nav-item right">
+                  <a class="nav-link" href="{% url 'factory:logout' %}">Выйти</a>
+                </li>
+                <li class="nav-item right active">
+                  <span class="nav-link">{{user.username}}</span>
+                </li>
+              {% else %}
+                  <li class="nav-item right">
+                  <a class="nav-link" href="{% url 'factory:register' %}">Зарегистрироваться</a>
+                </li>
+                <li class="nav-item right">
+                  <a class="nav-link" href="{% url 'factory:login' %}">Войти</a>
+                </li>
+              {% endif %}
+              </ul>
+              <!--span class="navbar-text">
+                Navbar text with an inline element
+              </span/-->
+            </div>
+          </nav>
+      </div>
+
+    <div class="main">
+      <a name="top"></a>
+        <a href="#top" class="top-link">
+            <svg class="top-arrow" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 226 226" style=" fill: #000000;">
+                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                    <path d="M0,226v-226h226v226z" fill="none"></path>
+                    <g fill="#000000">
+                        <path d="M113,23.37688l-96.79156,96.79156c-2.36594,2.26 -3.31937,5.63234 -2.48953,8.81047c0.82984,3.16047 3.30172,5.63234 6.46219,6.46219c3.17813,0.82984 6.55047,-0.12359 8.81047,-2.48953l84.00844,-84.00844l84.00844,84.00844c2.26,2.36594 5.63234,3.31938 8.81047,2.48953c3.16047,-0.82984 5.63234,-3.30172 6.46219,-6.46219c0.82984,-3.17812 -0.12359,-6.55047 -2.48953,-8.81047zM113,82.13688l-96.79156,96.79156c-2.36594,2.26 -3.31937,5.63234 -2.48953,8.81047c0.82984,3.16047 3.30172,5.63234 6.46219,6.46219c3.17813,0.82984 6.55047,-0.12359 8.81047,-2.48953l84.00844,-84.00844l84.00844,84.00844c2.26,2.36594 5.63234,3.31937 8.81047,2.48953c3.16047,-0.82984 5.63234,-3.30172 6.46219,-6.46219c0.82984,-3.17813 -0.12359,-6.55047 -2.48953,-8.81047z"></path>
+                    </g>
+                </g>
+            </svg>
+        </a>
+      {% block content %}My site {% endblock %}
+    </div>
+
+
+
+  </div>
+<div class="footer">
+    <div>email: lovtsov2001@bk.ru</div>
+     <div> Все права защищены &copy</div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

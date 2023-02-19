@@ -1,0 +1,35 @@
+{% extends 'base.html' %} 
+
+
+
+{% block title %} add projects {% endblock %}
+
+{% block content %} 
+
+<section class="addarticle-form">
+    {% if request.user.is_authenticated %}
+
+     <h1>Add projects</h1>
+        <form class="article-form" action=" {% url 'factory:create_project' %}" method="post">
+
+            {% csrf_token %}
+            <p><input class="form-control" type="text" required placeholder="projects" name="project_name"></p>
+            <p><textarea class="form-control" name="project_description" required placeholder="project description" cols="30" rows="11"></textarea></p>
+            <p class="d-flex justify-content-center"><input type="checkbox" name="monitoring"> &nbsp Вести мониторинг изменений интенсивности звука?</p>
+         <button class="btn btn-dark" type="submit">Создать измерение</button>
+
+
+        </form>
+
+     {% else %}
+          <h1>Вам необходимо <a href="{% url 'factory:login' %}">авторизироваться</a> сначала</h1>
+     {% endif %}
+
+</section>
+
+
+
+
+
+
+{% endblock %}

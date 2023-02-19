@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+
+
+{% block title %} {{measure.measure_name}} {% endblock %}
+
+{% block content %} 
+<section class="measure">
+ <h2>{{measure.measure_name}}</h2>
+ <p>Сотрудник, проводивший эксперимент: {{measure.author_name.username}}</p>
+
+ <p>Проведено: <em>{{measure.date}}</em></p>
+
+{% autoescape off %}
+    {{plot_div}}
+{% endautoescape %}
+
+</section>
+
+{% endblock %}
