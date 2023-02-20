@@ -9,8 +9,8 @@
 <section class="articles-list">
     {% if request.user.is_authenticated %}
         <h1 class="margin">{{project.project_name}}</h1>
-        <p>Ответсвенный за проект: {{project.project_owner}}</p>
-        <p class="margin">{{project.project_description}}</p>
+        <p><u>Ответсвенный за проект</u>: {{project.project_owner}}</p>
+        <p class="margin"><u>Описание</u>: {{project.project_description}}</p>
 
          <p class="margin">Создан: <em>{{project.create_date}}</em></p>
 
@@ -39,7 +39,9 @@
         {% else %}
             <h1>Измерения еще не проводились</h1>
         {% endif %}
-        <div><a class="btn btn-dark" style="color: white;" href="{% url 'factory:addmeasure' project.id %}">Добавить измерение</a></div>
+        <div class="article-form" style="max-width: 200px">
+            <a class="btn btn-dark" style="color: white;" href="{% url 'factory:addmeasure' project.id %}">Добавить измерение</a>
+        </div>
     {% else %}
         <h1>Вам необходимо <a href="{% url 'factory:login' %}">авторизироваться</a> сначала</h1>
     {% endif %}
