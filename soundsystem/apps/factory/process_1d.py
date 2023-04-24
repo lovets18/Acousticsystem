@@ -18,6 +18,10 @@ def my_detrend_mean(x,k):
     return x - my_trend(x,k)
 
 def move_x_by_n(x,n):
+    '''
+    Сдвиг x на n влево
+    1 2 3 0 0 0 -> 0 0 0 1 2 3
+    '''
     n = int(n)
     if n > 0:
         x[n+1:] = x[1:-n]
@@ -34,7 +38,7 @@ def plot_diagram(data, K):
     for i in range(1, 2 * K + 1):
         Y = data
         for j in range(1, 8):
-            Y[:, j] = move_x_by_n(Y[:, j], (K + 1 - i) * (j - 5));
+            Y[:, j] = move_x_by_n(Y[:, j], (K + 1 - i) * (j - 5))
 
         mat = np.zeros((8, 8))
         for ii in range(1, 8):

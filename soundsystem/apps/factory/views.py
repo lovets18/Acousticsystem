@@ -140,10 +140,23 @@ def render_measure(request, measure_id):
                         range_r=[0, max_range * 1.1],
                         start_angle=0,
                         direction='counterclockwise',
-                        width=1200, height=400
+                        width=1200, height=380,
                         )
     sound = plot(fig, output_type="div")
-    context = {'plot_div': sound, 'measure': measure}
+    df_copy = df.copy()
+    df_copy['y'] = 1
+    fig2 = px.density_heatmap(
+        df_copy, y="y", z="r", x="phi",
+        animation_frame="iter",
+        histfunc="avg", nbinsx=50,
+        color_continuous_scale=px.colors.sequential.Jet,
+        labels={'phi':'угол', 'y':'', 'r':'интенсивность'},
+        width=1200, height=380,
+        )
+    fig2.update_xaxes(autorange="reversed")
+    fig2.update_yaxes(showticklabels=False)
+    heatmap = plot(fig2, output_type="div")
+    context = {'plot_div': sound, 'plot_heatmap': heatmap, 'measure': measure}
     return render(request, 'factory/render_measure.html', context)
 
 
