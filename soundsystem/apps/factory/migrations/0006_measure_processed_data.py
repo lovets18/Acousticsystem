@@ -5,16 +5,17 @@ import django.utils.timezone
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('factory', '0005_alter_measure_date'),
+        ("factory", "0005_alter_measure_date"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='measure',
-            name='processed_data',
-            field=models.FileField(default=django.utils.timezone.now, upload_to='documents/'),
+            model_name="measure",
+            name="processed_data",
+            field=models.FileField(
+                default=django.utils.timezone.now, upload_to="documents/"
+            ),
             preserve_default=False,
         ),
     ]

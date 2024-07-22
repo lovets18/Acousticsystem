@@ -5,31 +5,66 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Project',
+            name="Project",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('project_name', models.CharField(max_length=150, verbose_name='название проекта')),
-                ('project_description', models.TextField(verbose_name='описание проекта')),
-                ('create_date', models.DateTimeField(verbose_name='дата начала проекта')),
-                ('update_date', models.DateTimeField(verbose_name='дата изменений проекта')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "project_name",
+                    models.CharField(max_length=150, verbose_name="название проекта"),
+                ),
+                (
+                    "project_description",
+                    models.TextField(verbose_name="описание проекта"),
+                ),
+                (
+                    "create_date",
+                    models.DateTimeField(verbose_name="дата начала проекта"),
+                ),
+                (
+                    "update_date",
+                    models.DateTimeField(verbose_name="дата изменений проекта"),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Measure',
+            name="Measure",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('author_name', models.CharField(max_length=50, verbose_name='Автор комментария')),
-                ('date', models.DateTimeField(verbose_name='дата измерения')),
-                ('data', models.TextField(verbose_name='данные замеров')),
-                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='factory.project')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "author_name",
+                    models.CharField(max_length=50, verbose_name="Автор комментария"),
+                ),
+                ("date", models.DateTimeField(verbose_name="дата измерения")),
+                ("data", models.TextField(verbose_name="данные замеров")),
+                (
+                    "project",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="factory.project",
+                    ),
+                ),
             ],
         ),
     ]

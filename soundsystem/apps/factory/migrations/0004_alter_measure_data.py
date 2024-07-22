@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('factory', '0003_alter_measure_options_alter_project_options_and_more'),
+        ("factory", "0003_alter_measure_options_alter_project_options_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='measure',
-            name='data',
-            field=models.FileField(upload_to='documents/'),
+            model_name="measure",
+            name="data",
+            field=models.FileField(upload_to="documents/"),
         ),
     ]

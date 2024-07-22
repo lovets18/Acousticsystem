@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('factory', '0006_measure_processed_data'),
+        ("factory", "0006_measure_processed_data"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='project',
-            name='is_monitored',
+            model_name="project",
+            name="is_monitored",
             field=models.BooleanField(default=False),
         ),
     ]

@@ -4,15 +4,16 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('factory', '0004_alter_measure_data'),
+        ("factory", "0004_alter_measure_data"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='measure',
-            name='date',
-            field=models.DateTimeField(auto_now_add=True, verbose_name='дата измерения'),
+            model_name="measure",
+            name="date",
+            field=models.DateTimeField(
+                auto_now_add=True, verbose_name="дата измерения"
+            ),
         ),
     ]
